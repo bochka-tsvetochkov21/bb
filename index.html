@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бочка Цветочков - Цветы с душой</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- ОБЩИЕ СТИЛИ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #3a2c1c;
+            background-color: #faf8f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ЦВЕТА --- */
+        /* Темно-зеленый: #1e3d2b */
+        /* Розовый: #e8a0b4 */
+        /* Коричневый: #5a3d2b */
+
+        /* --- ШАПКА --- */
+        header {
+            background: #1e3d2b;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo a {
+            color: #e8a0b4;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .logo a span {
+            color: white;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+        }
+        nav ul li a:hover {
+            color: #e8a0b4;
+            border-bottom-color: #e8a0b4;
+        }
+
+        .header-phone {
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d2b;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            border: 1px solid #e8a0b4;
+        }
+        .header-phone i {
+            color: #e8a0b4;
+            margin-right: 8px;
+        }
+        .header-phone a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН --- */
+        .hero {
+            background: linear-gradient(135deg, #1e3d2b 0%, #2d5a3f 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M10,10 L90,10 L80,90 L20,90 Z" fill="none" stroke="%23e8a0b4" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23e8a0b4" stroke-width="1.5"/></svg>');
+            background-size: 200px 200px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .hero h1 span {
+            color: #e8a0b4;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        .hero .btn {
+            background: #e8a0b4;
+            color: #1e3d2b;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 2px solid #e8a0b4;
+        }
+        .hero .btn:hover {
+            background: transparent;
+            color: #e8a0b4;
+            transform: scale(1.05);
+        }
+
+        /* ======================================== */
+        /* === СЕКЦИЯ МЕНЮ - СЛАЙДЕРЫ === */
+        /* ======================================== */
+        .menu-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1e3d2b;
+            margin-bottom: 15px;
+        }
+        .section-title span {
+            color: #e8a0b4;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #5a3d2b;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        /* Контейнер слайдера */
+        .slider-container {
+            position: relative;
+            max-width: 450px;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+
+        /* Обертка со слайдами */
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Каждый слайд - карточка с фото */
+        .slider-item {
+            min-width: 100%;
+            padding: 30px 25px 35px;
+            text-align: center;
+            background: #fff;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s;
+        }
+        .slider-item:hover {
+            background: #faf8f5;
+        }
+
+        /* Фото цветка */
+        .slider-item .flower-img {
+            width: 100%;
+            max-width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border: 3px solid #f4efe8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .slider-item:hover .flower-img {
+            transform: scale(1.03);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+        }
+
+        .slider-item h3 {
+            font-size: 1.8rem;
+            color: #1e3d2b;
+            margin-bottom: 5px;
+        }
+        .slider-item .subtitle {
+            color: #7a6a5a;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        .slider-item .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #5a3d2b;
+            background: #e8d5c4;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
+            margin-top: 5px;
+        }
+        .slider-item.special {
+            border: 2px solid #e8a0b4;
+            background: #fff5f7;
+            border-radius: 20px;
+        }
+        .slider-item.special .price {
+            background: #e8a0b4;
+            color: #fff;
+        }
+
+        /* Стрелки */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(30, 61, 43, 0.85);
+            color: white;
+            border: 2px solid #e8a0b4;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-btn:hover {
+            background: #1e3d2b;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .slider-btn.prev {
+            left: 10px;
+        }
+        .slider-btn.next {
+            right: 10px;
+        }
+
+        /* Точки-индикаторы */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d4c5b2;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dot.active {
+            background: #e8a0b4;
+            transform: scale(1.3);
+        }
+        .slider-dot:hover {
+            background: #e8a0b4;
+        }
+
+        /* Счетчик */
+        .slider-counter {
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #7a6a5a;
+            font-weight: 500;
+        }
+
+        /* Заголовок слайдера */
+        .slider-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #1e3d2b;
+            margin-bottom: 20px;
+        }
+        .slider-title i {
+            color: #e8a0b4;
+            margin: 0 10px;
+        }
+
+        /* Разделитель */
+        .slider-divider {
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+        .slider-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e8a0b4, transparent);
+        }
+        .slider-divider span {
+            background: #fff;
+            padding: 0 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3d2b;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+        }
+        .slider-divider span i {
+            color: #e8a0b4;
+            margin: 0 10px;
+        }
+
+        /* --- СЕКЦИЯ О НАС --- */
+        .about-section {
+            padding: 80px 0;
+            background: #f4efe8;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: #1e3d2b;
+            margin-bottom: 20px;
+        }
+        .about-text h2 span {
+            color: #e8a0b4;
+        }
+        .about-text p {
+            margin-bottom: 15px;
+            color: #3a2c1c;
+        }
+        .about-text .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+            list-style: none;
+        }
+        .about-text .features li {
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border-left: 4px solid #e8a0b4;
+            font-weight: 500;
+            color: #1e3d2b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .about-text .features li i {
+            color: #e8a0b4;
+            margin-right: 10px;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 250px;
+            background: #1e3d2b;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid #8B5A2B;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .about-image i {
+            font-size: 5rem;
+            color: #e8a0b4;
+            margin-bottom: 15px;
+        }
+        .about-image p {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* --- СЕКЦИЯ КОНТАКТЫ --- */
+        .contact-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #1e3d2b;
+            margin-bottom: 25px;
+        }
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact-info i {
+            width: 30px;
+            color: #e8a0b4;
+            font-size: 1.4rem;
+        }
+        .contact-info .social a {
+            color: #1e3d2b;
+            background: #f4efe8;
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 50px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid #d4c5b2;
+        }
+        .contact-info .social a:hover {
+            background: #e8a0b4;
+            color: #fff;
+            border-color: #e8a0b4;
+        }
+        .contact-info .work-hours {
+            background: #f4efe8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #e8a0b4;
+        }
+        .contact-map {
+            flex: 1;
+            min-width: 280px;
+            background: #e0d6c8;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #b8a694;
+        }
+        .contact-map i {
+            font-size: 3rem;
+            color: #1e3d2b;
+            margin-bottom: 15px;
+        }
+        .contact-map .address {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* --- ПОДВАЛ --- */
+        footer {
+            background: #1e3d2b;
+            color: #ccc;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        footer a {
+            color: #e8a0b4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        footer .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        footer .footer-logo span {
+            color: #e8a0b4;
+        }
+
+        /* ======================================== */
+        /* === МОДАЛЬНОЕ ОКНО === */
+        /* ======================================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-window {
+            background: #fff;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 35px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            animation: slideUp 0.4s ease;
+            border-top: 6px solid #e8a0b4;
+        }
+        .modal-window .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+        }
+        .modal-window .close-btn:hover {
+            color: #1e3d2b;
+        }
+        .modal-window .flower-icon {
+            font-size: 3.5rem;
+            color: #e8a0b4;
+            margin-bottom: 10px;
+        }
+        .modal-window h2 {
+            font-size: 1.8rem;
+            color: #1e3d2b;
+            margin-bottom: 10px;
+        }
+        .modal-window h2 span {
+            color: #e8a0b4;
+        }
+        .modal-window p {
+            color: #5a3d2b;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .modal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .modal-btn {
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+        .modal-btn.call {
+            background: #1e3d2b;
+            color: #fff;
+            border-color: #1e3d2b;
+        }
+        .modal-btn.call:hover {
+            background: transparent;
+            color: #1e3d2b;
+        }
+        .modal-btn.tg {
+            background: #e8a0b4;
+            color: #1e3d2b;
+            border-color: #e8a0b4;
+        }
+        .modal-btn.tg:hover {
+            background: transparent;
+            color: #e8a0b4;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(40px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .contact-grid {
+                flex-direction: column;
+            }
+            .modal-window {
+                padding: 30px 20px;
+            }
+            .modal-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .slider-container {
+                max-width: 100%;
+            }
+            .slider-item {
+                padding: 25px 15px 30px;
+            }
+            .slider-item .flower-img {
+                max-width: 200px;
+                height: 200px;
+            }
+            .slider-item h3 {
+                font-size: 1.5rem;
+            }
+            .slider-item .price {
+                font-size: 1.6rem;
+                padding: 6px 24px;
+            }
+            .slider-divider span {
+                font-size: 1.2rem;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .slider-item {
+                padding: 20px 12px 25px;
+            }
+            .slider-item .flower-img {
+                max-width: 150px;
+                height: 150px;
+            }
+            .slider-item h3 {
+                font-size: 1.2rem;
+            }
+            .slider-item .price {
+                font-size: 1.3rem;
+                padding: 5px 18px;
+            }
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#">Бочка <span>Цветочков</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Меню</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-phone">
+                <i class="fas fa-phone-alt"></i> <a href="tel:+79871297888">8 987 129-78-88</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Бочка <span>Цветочков</span></h1>
+            <p>Цветы с душой. Авторские букеты, свежесть и стиль в каждом лепестке.</p>
+            <a href="#menu" class="btn">Посмотреть меню</a>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- СЕКЦИЯ МЕНЮ - СЛАЙДЕРЫ -->
+    <!-- ========================================== -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Наше <span>меню</span></h2>
+            <p class="section-subtitle">Нажмите на карточку, чтобы заказать</p>
+
+            <!-- ========================================== -->
+            <!-- СЛАЙДЕР 1: БУКЕТЫ (СВЕРХУ) -->
+            <!-- ========================================== -->
+            <div class="slider-title">
+                <i class="fas fa-gem"></i> Готовые букеты <i class="fas fa-gem"></i>
+            </div>
+
+            <div class="slider-container" id="bouquetSlider">
+                <button class="slider-btn prev" data-slider="bouquet"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" data-slider="bouquet"><i class="fas fa-chevron-right"></i></button>
+
+                <div class="slider-track" id="bouquetTrack">
+                    <!-- Букет 1 -->
+                    <div class="slider-item special" data-name="Романтический букет">
+                        <img src="img/букет.jpg" alt="Романтический букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">3240 ₽</div>
+                    </div>
+
+                    <!-- Букет 2 -->
+                    <div class="slider-item special" data-name="Свадебный букет">
+                        <img src="img/букет 2.jpg" alt="Свадебный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">3340 ₽</div>
+                    </div>
+
+                    <!-- Букет 3 -->
+                    <div class="slider-item special" data-name="Яркий букет">
+                        <img src="img/букет 3.jpg" alt="Яркий букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">3350 ₽</div>
+                    </div>
+
+                    <!-- Букет 4 -->
+                    <div class="slider-item special" data-name="Весенний букет">
+                        <img src="img/букет 4.jpg" alt="Весенний букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">4890 ₽</div>
+                    </div>
+
+                    <!-- Букет 5 -->
+                    <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 5.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">3260 ₽</div>
+                    </div>
+
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 6.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">4050 ₽</div>
+                    </div>
+
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 7.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">3140 ₽</div>
+                    </div>
+
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 8.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">5650 ₽</div>
+                    </div>
+
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 9.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">5650 ₽</div>
+                    </div>
+
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 10.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">5130 ₽</div>
+                    </div>
+                                        <div class="slider-item special" data-name="Эксклюзивный букет">
+                        <img src="img/букет 11.jpg" alt="Эксклюзивный букет" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23fff5f7%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23e8a0b4%22 font-size=%2230%22 font-family=%22sans-serif%22>💐</text></svg>'">
+                        <div class="price">2350 ₽</div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- 🔽 СЮДА ДОБАВЛЯЙТЕ СВОИ БУКЕТЫ 🔽 -->
+                    <!-- ========================================== -->
+                    <!-- 
+                    <div class="slider-item special" data-name="Название букета">
+                        <img src="img/ваше_фото.jpg" alt="Название" class="flower-img">
+                        <h3>Название</h3>
+                        <p class="subtitle">Описание букета</p>
+                        <div class="price">Цена ₽</div>
+                    </div>
+                    -->
+                    <!-- ========================================== -->
+                    <!-- 🔼 КОНЕЦ БЛОКА ДЛЯ ДОБАВЛЕНИЯ 🔼 -->
+                    <!-- ========================================== -->
+                </div>
+            </div>
+
+            <!-- Точки для букетов -->
+            <div class="slider-dots" id="bouquetDots"></div>
+            <div class="slider-counter" id="bouquetCounter">1 / 5</div>
+
+            <!-- ========================================== -->
+            <!-- РАЗДЕЛИТЕЛЬ -->
+            <!-- ========================================== -->
+            <div class="slider-divider">
+                <span><i class="fas fa-leaf"></i> Цветы <i class="fas fa-leaf"></i></span>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- СЛАЙДЕР 2: ЦВЕТЫ (ВНИЗУ) -->
+            <!-- ========================================== -->
+            <div class="slider-title">
+                <i class="fas fa-seedling"></i> Отдельные цветы <i class="fas fa-seedling"></i>
+            </div>
+
+            <div class="slider-container" id="flowerSlider">
+                <button class="slider-btn prev" data-slider="flower"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" data-slider="flower"><i class="fas fa-chevron-right"></i></button>
+
+                <div class="slider-track" id="flowerTrack">
+                    <!-- 1 -->
+                    <div class="slider-item" data-name="Лилия">
+                        <img src="img/1 (1).jpg" alt="Лилия" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌷 Лилия</text></svg>'">
+                        <h3>Лилия</h3>
+                        <p class="subtitle">Благородство и чистота</p>
+                        <div class="price">600 ₽</div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="slider-item" data-name="Лилия">
+                        <img src="img/1 (2).jpg" alt="Лилия" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌷 Лилия</text></svg>'">
+                        <h3>Лилия</h3>
+                        <p class="subtitle">Благородство и чистота</p>
+                        <div class="price">600 ₽</div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (3).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (4).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">280 ₽</div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (5).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">250 ₽</div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (6).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">280 ₽</div>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (7).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">280 ₽</div>
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="slider-item" data-name="Эустома">
+                        <img src="img/1 (8).jpg" alt="Эустома" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌸 Эустома</text></svg>'">
+                        <h3>Эустома</h3>
+                        <p class="subtitle">Изящество и нежность</p>
+                        <div class="price">400 ₽</div>
+                    </div>
+
+                    <!-- 9 -->
+                    <div class="slider-item" data-name="Эустома">
+                        <img src="img/1 (9).jpg" alt="Эустома" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌸 Эустома</text></svg>'">
+                        <h3>Эустома</h3>
+                        <p class="subtitle">Изящество и нежность</p>
+                        <div class="price">400 ₽</div>
+                    </div>
+
+                    <!-- 10 -->
+                    <div class="slider-item" data-name="Хризантема">
+                        <img src="img/1 (10).jpg" alt="Хризантема" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌻 Хризантема</text></svg>'">
+                        <h3>Хризантема</h3>
+                        <p class="subtitle">Стойкие и солнечные</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 11 -->
+                    <div class="slider-item" data-name="Хризантема">
+                        <img src="img/1 (11).jpg" alt="Хризантема" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌻 Хризантема</text></svg>'">
+                        <h3>Хризантема</h3>
+                        <p class="subtitle">Стойкие и солнечные</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 12 -->
+                    <div class="slider-item" data-name="Танацетум">
+                        <img src="img/1 (12).jpg" alt="Танацетум" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌼 Танацетум</text></svg>'">
+                        <h3>Танацетум</h3>
+                        <p class="subtitle">Яркие краски лета</p>
+                        <div class="price">200 ₽</div>
+                    </div>
+
+                    <!-- 13 -->
+                    <div class="slider-item" data-name="Эустома">
+                        <img src="img/1 (13).jpg" alt="Эустома" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌸 Эустома</text></svg>'">
+                        <h3>Эустома</h3>
+                        <p class="subtitle">Изящество и нежность</p>
+                        <div class="price">400 ₽</div>
+                    </div>
+
+                    <!-- 14 -->
+                    <div class="slider-item" data-name="Кустовая роза">
+                        <img src="img/1 (14).jpg" alt="Кустовая роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Кустовая роза</text></svg>'">
+                        <h3>Кустовая роза</h3>
+                        <p class="subtitle">Нежность и изобилие</p>
+                        <div class="price">400 ₽</div>
+                    </div>
+
+                    <!-- 15 -->
+                    <div class="slider-item" data-name="Хризантема">
+                        <img src="img/1 (15).jpg" alt="Хризантема" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌻 Хризантема</text></svg>'">
+                        <h3>Хризантема</h3>
+                        <p class="subtitle">Стойкие и солнечные</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 16 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (16).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 17 -->
+                    <div class="slider-item" data-name="Роза">
+                        <img src="img/1 (17).jpg" alt="Роза" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌹 Роза</text></svg>'">
+                        <h3>Роза</h3>
+                        <p class="subtitle">Королева цветов</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 18 -->
+                    <div class="slider-item" data-name="Хризантема">
+                        <img src="img/1 (18).jpg" alt="Хризантема" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌻 Хризантема</text></svg>'">
+                        <h3>Хризантема</h3>
+                        <p class="subtitle">Стойкие и солнечные</p>
+                        <div class="price">300 ₽</div>
+                    </div>
+
+                    <!-- 19 -->
+                    <div class="slider-item" data-name="Диантус">
+                        <img src="img/1 (19).jpg" alt="Диантус" class="flower-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22><rect width=%22280%22 height=%22280%22 fill=%22%23f4efe8%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%235a3d2b%22 font-size=%2220%22 font-family=%22sans-serif%22>🌺 Диантус</text></svg>'">
+                        <h3>Диантус (гвоздика)</h3>
+                        <p class="subtitle">Яркость и изящество</p>
+                        <div class="price">120 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Точки для цветов -->
+            <div class="slider-dots" id="flowerDots"></div>
+            <div class="slider-counter" id="flowerCounter">1 / 19</div>
+
+        </div>
+    </section>
+
+    <!-- О НАС -->
+    <section class="about-section" id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>Бочка <span>Цветочков</span> — цветы с душой</h2>
+                <p>Добро пожаловать в уютный мир живых цветов, где каждый букет создаётся с теплом и вниманием к деталям.</p>
+                <p>Мы — цветочный магазин в Новочебоксарске, который любит своё дело и ценит каждого клиента. Наша философия проста: цветы должны радовать, а не разочаровывать. Поэтому мы работаем только со свежими срезами, выбираем лучших поставщиков и никогда не экономим на качестве.</p>
+                
+                <h3 style="color:#1e3d2b; margin-top: 25px;">🌿 Что мы предлагаем</h3>
+                <p><strong>Авторские букеты</strong> — от нежных и романтичных до ярких и дерзких. Любой повод: день рождения, свидание, свадьба, 8 Марта, выпускной или просто «хочу порадовать».</p>
+                <p><strong>Оформление праздников</strong> — банкетные залы, свадьбы, дни рождения, корпоративы. Живые цветы превращают любое событие в праздник.</p>
+                <p><strong>Доставка</strong> — по Новочебоксарску и Чебоксарам в удобное для вас время.</p>
+                <p><strong>Корпоративные заказы</strong> — цветы для офисов, мероприятий и подарков партнёрам.</p>
+
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Свежесть гарантируем</li>
+                    <li><i class="fas fa-check-circle"></i> Индивидуальный подход</li>
+                    <li><i class="fas fa-check-circle"></i> Честные цены</li>
+                    <li><i class="fas fa-check-circle"></i> Стильная упаковка</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <i class="fas fa-seedling"></i>
+                <p>"Цветы — это музыка, которая говорит с душой."</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">#БочкаЦветочков</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="contact-section" id="contacts">
+        <div class="container">
+            <h2 class="section-title">Наши <span>контакты</span></h2>
+            <p class="section-subtitle">Всегда рады видеть вас в нашем уютном магазине.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <p><i class="fas fa-map-pin"></i> <strong>Адрес:</strong> г. Новочебоксарск, ул. 10-пятилетки, 88</p>
+                    <p><i class="fas fa-phone-alt"></i> <strong>Телефон:</strong> <a href="tel:+79871297888" style="color:#1e3d2b; text-decoration:none;">8 987 129-78-88</a></p>
+                    <div class="social">
+                        <a href="https://t.me/bockacvetockov" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                    </div>
+                    <div class="work-hours">
+                        <h4 style="color:#1e3d2b;"><i class="far fa-clock" style="color:#e8a0b4;"></i> Режим работы</h4>
+                        <p style="font-size: 1.2rem; font-weight: 600;">Ежедневно с 09:00 до 21:00</p>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Без выходных и праздников</p>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <i class="fas fa-store"></i>
+                    <div class="address">г. Новочебоксарск</div>
+                    <p style="margin: 5px 0;">ул. 10-пятилетки, 88</p>
+                    <div style="background: #fff; padding: 10px 15px; border-radius: 30px; margin-top: 15px; color: #1e3d2b; font-weight: 600;">
+                        <i class="fas fa-clock" style="color:#e8a0b4;"></i> 09:00 – 21:00
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">* Ждём вас с цветами и улыбкой</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">Бочка <span>Цветочков</span></div>
+            <div style="font-size: 0.9rem;">
+                © 2026 Все права защищены. <a href="https://t.me/bockacvetockov" target="_blank">Мы в Telegram</a>
+            </div>
+            <div style="font-size: 0.8rem; opacity: 0.7;">
+                <i class="fas fa-leaf" style="color:#e8a0b4;"></i> Понравился сайт? Хотите такй же? Свяжитесь по номеру +79935530718
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <!-- ========================================== -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-window">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <div class="flower-icon">
+                <i class="fas fa-rose"></i>
+            </div>
+            <h2>Хотите <span>заказать</span>?</h2>
+            <p>
+                Для оформления заказа позвоните нам по телефону <br>
+                или перейдите в наш Telegram-канал.
+            </p>
+            <div class="modal-buttons">
+                <a href="tel:+79871297888" class="modal-btn call">
+                    <i class="fas fa-phone-alt"></i> Позвонить
+                </a>
+                <a href="https://t.me/bockacvetockov" target="_blank" class="modal-btn tg">
+                    <i class="fab fa-telegram-plane"></i> Перейти в Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT - СЛАЙДЕРЫ И МОДАЛКА -->
+    <!-- ========================================== -->
+    <script>
+        (function() {
+            // ----- ФУНКЦИЯ ДЛЯ СОЗДАНИЯ СЛАЙДЕРА -----
+            function initSlider(trackId, dotsId, counterId, prevBtn, nextBtn) {
+                const track = document.getElementById(trackId);
+                const items = track.querySelectorAll('.slider-item');
+                const totalItems = items.length;
+                let currentIndex = 0;
+                let autoSlideInterval;
+
+                const dotsContainer = document.getElementById(dotsId);
+                const counter = document.getElementById(counterId);
+
+                // Очищаем контейнер точек
+                dotsContainer.innerHTML = '';
+
+                // Создаем точки
+                for (let i = 0; i < totalItems; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+                const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+                function goToSlide(index) {
+                    if (index < 0) index = totalItems - 1;
+                    if (index >= totalItems) index = 0;
+                    currentIndex = index;
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIndex);
+                    });
+                    
+                    counter.textContent = `${currentIndex + 1} / ${totalItems}`;
+                }
+
+                function nextSlide() {
+                    goToSlide(currentIndex + 1);
+                }
+
+                function prevSlide() {
+                    goToSlide(currentIndex - 1);
+                }
+
+                // Назначаем кнопки
+                const prevBtnEl = document.querySelector(prevBtn);
+                const nextBtnEl = document.querySelector(nextBtn);
+
+                if (prevBtnEl) {
+                    prevBtnEl.addEventListener('click', () => {
+                        prevSlide();
+                        resetAutoSlide();
+                    });
+                }
+                if (nextBtnEl) {
+                    nextBtnEl.addEventListener('click', () => {
+                        nextSlide();
+                        resetAutoSlide();
+                    });
+                }
+
+                // Автопрокрутка
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(nextSlide, 4000);
+                }
+
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    startAutoSlide();
+                }
+
+                // Остановка при наведении
+                const container = track.closest('.slider-container');
+                if (container) {
+                    container.addEventListener('mouseenter', () => {
+                        clearInterval(autoSlideInterval);
+                    });
+                    container.addEventListener('mouseleave', () => {
+                        startAutoSlide();
+                    });
+                }
+
+                // Клавиатура
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft' && container && container.contains(document.activeElement)) {
+                        prevSlide();
+                        resetAutoSlide();
+                    } else if (e.key === 'ArrowRight' && container && container.contains(document.activeElement)) {
+                        nextSlide();
+                        resetAutoSlide();
+                    }
+                });
+
+                // Запускаем
+                startAutoSlide();
+
+                // Возвращаем функции для внешнего использования
+                return { goToSlide, nextSlide, prevSlide, items };
+            }
+
+            // ----- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ -----
+
+            // Слайдер с букетами
+            const bouquetSlider = initSlider(
+                'bouquetTrack',
+                'bouquetDots',
+                'bouquetCounter',
+                '.slider-btn.prev[data-slider="bouquet"]',
+                '.slider-btn.next[data-slider="bouquet"]'
+            );
+
+            // Слайдер с цветами
+            const flowerSlider = initSlider(
+                'flowerTrack',
+                'flowerDots',
+                'flowerCounter',
+                '.slider-btn.prev[data-slider="flower"]',
+                '.slider-btn.next[data-slider="flower"]'
+            );
+
+            // ----- МОДАЛЬНОЕ ОКНО -----
+            const modal = document.getElementById('orderModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+
+            function openModal() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Обработчики для всех товаров (букеты + цветы)
+            const allItems = document.querySelectorAll('.slider-item');
+            allItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    openModal();
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
